@@ -20,6 +20,15 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'PhoneNumber',
+        'ProfilePicture',
+        'gender',
+        'brith_day',
+        'latitude',
+        'longitude',
+        'City',
+        'Country',
+        'invite_link'
     ];
 
     /**
@@ -43,5 +52,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function userable(): \Illuminate\Database\Eloquent\Relations\MorphTo
+    {
+        return $this->morphTo();
     }
 }

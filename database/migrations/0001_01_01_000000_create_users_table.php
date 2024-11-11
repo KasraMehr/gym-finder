@@ -17,6 +17,22 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('PhoneNumber')->nullable();
+            $table->string('ProfilePicture')->nullable();
+            $table->enum('gender', ['man', 'woman'])->nullable();
+            $table->date('brith_day')->nullable();
+
+            // Polymorphic columns for the one-to-one relationship with Athlete, Coach, or GymOwner
+            $table->unsignedBigInteger('userable_id')->nullable();
+            $table->string('userable_type')->nullable();
+
+            // Fields for location
+            $table->decimal('latitude', 10, 7)->nullable();
+            $table->decimal('longitude', 10, 7)->nullable();
+
+            $table->string('City')->nullable();
+            $table->string('Country')->nullable();
+            $table->string('invite_link'); // invite link for the user to invite others TODO: fix automate
             $table->rememberToken();
             $table->timestamps();
         });
