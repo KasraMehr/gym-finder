@@ -32,6 +32,7 @@ return new class extends Migration
 
             $table->string('City')->nullable();
             $table->string('Country')->nullable();
+            $table->enum('type', ['athlete', 'coach', 'gym_owner'])->default();
             $table->string('invite_link'); // invite link for the user to invite others TODO: fix automate
             $table->rememberToken();
             $table->timestamps();
