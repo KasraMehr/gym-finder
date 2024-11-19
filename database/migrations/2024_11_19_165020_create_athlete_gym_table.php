@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('athlete_coach', function (Blueprint $table) {
+        Schema::create('athlete_gym', function (Blueprint $table) {
             $table->id();
             $table->unsignedBiginteger('AthleteID')->unsigned();
-            $table->unsignedBiginteger('CoachID')->unsigned();
+            $table->unsignedBiginteger('GymOwnerID')->unsigned();
 
             $table->foreign('AthleteID')->references('id')
                 ->on('athletes')->onDelete('cascade');
-            $table->foreign('CoachID')->references('id')
-                ->on('coaches')->onDelete('cascade');
+            $table->foreign('GymOwnerID')->references('id')
+                ->on('gym_owners')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -29,6 +29,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('athlete_coach');
+        Schema::dropIfExists('athlete_gym');
     }
 };
+
