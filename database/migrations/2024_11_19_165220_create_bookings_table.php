@@ -22,7 +22,6 @@ return new class extends Migration
             $table->foreign('ClassID')->references('id')
                 ->on('classes')->onDelete('cascade');
             $table->timestamp('BookingDate')->default(Carbon::now());
-            $table->boolean('PaymentStatus');
             // TODO: attendance associated table.
             $table->timestamps();
 

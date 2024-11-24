@@ -5,27 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GymOwner extends Model
+class Review extends Model
 {
-    use HasFactory;
-    protected $table = "athletes";
-    protected $primaryKey = 'GymOwnerID';
+    protected $table = "reviews";
+    protected $primaryKey = 'ReviewID';
     protected $fillable = [
-        'GymName',
-        'address',
-        'city',
         'Rating',
-        'OpeningHours',
-        'ContactInfo',
+        'comment',
+        'ReviewDate',
+
     ];
 
-    public function user(): \Illuminate\Database\Eloquent\Relations\MorphOne
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->morphOne(User::class, 'userable');
+        return $this->belongsTo(User::class, 'id');
     }
 
     public function coach(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Coach::class,  'athlete_coach', 'CoachID','AthleteID');
     }
+
+    use HasFactory;
 }

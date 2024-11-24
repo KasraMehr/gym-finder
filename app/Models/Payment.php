@@ -5,18 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GymOwner extends Model
+class Payment extends Model
 {
-    use HasFactory;
-    protected $table = "athletes";
-    protected $primaryKey = 'GymOwnerID';
+    protected $table = "payments";
+    protected $primaryKey = 'PaymentID';
     protected $fillable = [
-        'GymName',
-        'address',
-        'city',
-        'Rating',
-        'OpeningHours',
-        'ContactInfo',
+        'PaymentDate',
+        'PaymentStatus',
+        'amount',
+
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\MorphOne
@@ -28,4 +25,11 @@ class GymOwner extends Model
     {
         return $this->belongsToMany(Coach::class,  'athlete_coach', 'CoachID','AthleteID');
     }
+
+    public function booking(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(Booking::class, 'BookingID');
+    }
+
+    use HasFactory;
 }

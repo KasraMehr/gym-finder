@@ -19,6 +19,10 @@ return new class extends Migration
             $table->foreign('ReviewerID')->references('id')
                 ->on('users')->onDelete('cascade');
 
+            // TODO: classes
+            // TODO: gyms
+            // TODO: coaches
+
             $table->decimal('Rating', 2, 1)->default(5);
             $table->text('comment')->nullable();
             $table->timestamp('ReviewDate')->default(Carbon::now());

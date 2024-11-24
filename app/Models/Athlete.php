@@ -29,8 +29,13 @@ class Athlete extends Model
         return $this->belongsToMany(Coach::class,  'athlete_coach', 'AthleteID','CoachID');
     }
 
-    public function gyms(): \Illuminate\Database\Eloquent\Relations\BelongsToMan
+    public function gyms(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(GymOwners::class, 'gyms_athletes', 'AthleteID', 'GymOwnerID');
+        return $this->belongsToMany(GymOwner::class, 'gyms_athletes', 'AthleteID', 'GymOwnerID');
+    }
+
+    public function booking(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->HasOne(Coach::class,  'ClassID');
     }
 }

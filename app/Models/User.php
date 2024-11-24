@@ -58,4 +58,8 @@ class User extends Authenticatable
     {
         return $this->morphTo();
     }
+    public function review(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
 }

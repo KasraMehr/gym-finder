@@ -5,12 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Coach extends Model
+class Gym extends Model
 {
-    use HasFactory;
-
-    protected $table = "athletes";
-    protected $primaryKey = 'CoachIDi';
+    protected $table = "gyms";
+    protected $primaryKey = 'GymID';
     protected $fillable = [
         'Specialties',
         'Certifications',
@@ -26,15 +24,8 @@ class Coach extends Model
 
     public function clubClass(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->HasMany(ClubClass::class);
+        return $this->HasMAny(ClubClass::class);
     }
 
-    public function athlete(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
-    {
-        return $this->belongsToMany(Athlete::class);
-    }
-    public function gymOwner(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
-    {
-        return $this->belongsToMany(GymOwner::class);
-    }
+    use HasFactory;
 }

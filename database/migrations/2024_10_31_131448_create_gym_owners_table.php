@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Foreign key to Users
             $table->string('GymName')->nullable(); // Gym name for the gym owner
             $table->timestamps();
-            $table->string('facalities')->nullable(); // the facalities that gym has
+            //$table->string('facalities')->nullable(); // the facalities that gym has
             //TODO: add rating
             $table->foreignId('GymID')->constrained('users')->onDelete('cascade'); // has many gyms
         });
