@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('coaches', function (Blueprint $table) {
             $table->id('CoachID');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Foreign key to Users
+            $table->foreignId('userID')->constrained('users')->onDelete('cascade'); // Foreign key to Users
             $table->json('Specialties')->nullable(); // Specialties like "Bodybuilding," "Yoga"
             $table->json('Certifications')->nullable(); // JSON for holding multiple certifications
             $table->integer('ExperienceYears')->nullable(); // Number of years of experience

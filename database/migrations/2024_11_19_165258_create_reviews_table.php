@@ -14,14 +14,10 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id('ReviewID');
-            $table->unsignedBigInteger('ReviewerID');
 
-            $table->foreign('ReviewerID')->references('id')
-                ->on('users')->onDelete('cascade');
+            $table->foreignId('userID')->constrained('users')->onDelete('cascade');
 
-            // TODO: classes
-            // TODO: gyms
-            // TODO: coaches
+            $table->morphs('reviewable');
 
             $table->decimal('Rating', 2, 1)->default(5);
             $table->text('comment')->nullable();

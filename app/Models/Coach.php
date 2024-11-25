@@ -24,17 +24,22 @@ class Coach extends Model
         return $this->morphOne(User::class, 'userable');
     }
 
-    public function clubClass(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function clubClasses(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->HasMany(ClubClass::class);
     }
 
-    public function athlete(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function athletes(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Athlete::class);
+        return $this->belongsToMany(Athlete::class, 'athlete_coach', 'CoachID', 'AthleteID');
     }
-    public function gymOwner(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function gyms(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(GymOwner::class);
+        return $this->belongsToMany(GymOwner::class, 'coach_gym', 'CoachID', 'GymID');
+    }
+
+    public function reviews(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Review::class, 'reviewable');
     }
 }

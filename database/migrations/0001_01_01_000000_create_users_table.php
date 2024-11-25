@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
+            $table->id('userID');
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -32,7 +32,7 @@ return new class extends Migration
 
             $table->string('City')->nullable();
             $table->string('Country')->nullable();
-            $table->enum('type', ['athlete', 'coach', 'gym_owner'])->default();
+            $table->enum('type', ['athlete', 'coach', 'gym_owner'])->default('athlete');
             $table->string('invite_link'); // invite link for the user to invite others TODO: fix automate
             $table->rememberToken();
             $table->timestamps();

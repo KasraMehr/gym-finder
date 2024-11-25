@@ -24,18 +24,18 @@ class Athlete extends Model
         return $this->morphOne(User::class, 'userable');
     }
 
-    public function coach(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function coaches(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
         return $this->belongsToMany(Coach::class,  'athlete_coach', 'AthleteID','CoachID');
     }
 
     public function gyms(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(GymOwner::class, 'gyms_athletes', 'AthleteID', 'GymOwnerID');
+        return $this->belongsToMany(Gym::class, 'gyms_athletes', 'AthleteID', 'GymID');
     }
 
-    public function booking(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function bookings(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->HasOne(Coach::class,  'ClassID');
+        return $this->hasMany(Booking::class);
     }
 }

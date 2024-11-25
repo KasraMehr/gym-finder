@@ -11,12 +11,7 @@ class GymOwner extends Model
     protected $table = "athletes";
     protected $primaryKey = 'GymOwnerID';
     protected $fillable = [
-        'GymName',
-        'address',
-        'city',
-        'Rating',
-        'OpeningHours',
-        'ContactInfo',
+        'contact_info'
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\MorphOne
@@ -24,8 +19,8 @@ class GymOwner extends Model
         return $this->morphOne(User::class, 'userable');
     }
 
-    public function coach(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function gym(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->belongsToMany(Coach::class,  'athlete_coach', 'CoachID','AthleteID');
+        return $this->hasOne(Gym::class,  'GymID');
     }
 }

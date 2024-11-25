@@ -13,11 +13,6 @@ class Booking extends Model
         'BookingDate',
     ];
 
-    public function user(): \Illuminate\Database\Eloquent\Relations\MorphOne
-    {
-        return $this->morphOne(User::class, 'userable');
-    }
-
     public function clubClass(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
         return $this->HasOne(Coach::class,  'ClassID');

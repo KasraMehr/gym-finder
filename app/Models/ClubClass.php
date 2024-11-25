@@ -27,9 +27,19 @@ class ClubClass extends Model
         return $this->BelongsTo(Coach::class, 'CoachID');
     }
 
-    public function booking(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function sport(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->HasMany(Booking::class);
+        return $this->BelongsTo(Sport::class, 'SportID');
+    }
+
+    public function bookings(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Booking::class);
+    }
+
+    public function reviews(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Review::class, 'reviewable');
     }
 
     use HasFactory;

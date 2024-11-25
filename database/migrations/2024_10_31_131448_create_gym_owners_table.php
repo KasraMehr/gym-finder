@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('gym_owners', function (Blueprint $table) {
             $table->id('GymOwnerID');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade'); // Foreign key to Users
-            $table->string('GymName')->nullable(); // Gym name for the gym owner
+            $table->string('contact_info')->nullable();
+            $table->foreignId('userID')->constrained('users')->onDelete('cascade'); // Foreign key to Users
+            $table->foreignId('GymID')->constrained('gyms');
             $table->timestamps();
-            //$table->string('facalities')->nullable(); // the facalities that gym has
-            //TODO: add rating
-            $table->foreignId('GymID')->constrained('users')->onDelete('cascade'); // has many gyms
         });
     }
 

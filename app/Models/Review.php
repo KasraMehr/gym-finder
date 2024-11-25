@@ -18,12 +18,12 @@ class Review extends Model
 
     public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(User::class, 'id');
+        return $this->belongsTo(User::class, 'userID');
     }
 
-    public function coach(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    public function reviewable(): \Illuminate\Database\Eloquent\Relations\MorphTo
     {
-        return $this->belongsToMany(Coach::class,  'athlete_coach', 'CoachID','AthleteID');
+        return $this->morphTo();
     }
 
     use HasFactory;

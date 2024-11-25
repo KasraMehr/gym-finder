@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('SportID');
             $table->string('name');
             $table->text('description')->nullable();
-	    $table->boolean('olampyan')->nullable();
+	        $table->boolean('olampyan')->nullable();
             $table->timestamps();
         });
     }

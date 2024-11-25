@@ -17,10 +17,9 @@ return new class extends Migration
             $table->foreignId('GymOwnerID')->references('id')->on('gym_owners');
             $table->text('address')->nullable();
             $table->string('city');
-            // TODO: facilities
+            // TODO: facilities.
             $table->decimal('Rating', 2, 1)->default(5);
-            $table->string('OpeningHours')->nullable();
-            $table->string('ContactInfo')->nullable();
+            // TODO: opening hours.
             $table->timestamps();
         });
     }

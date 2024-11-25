@@ -10,11 +10,10 @@ class Gym extends Model
     protected $table = "gyms";
     protected $primaryKey = 'GymID';
     protected $fillable = [
-        'Specialties',
-        'Certifications',
-        'ExperienceYears',
+        'GymName',
+        'address',
+        'city',
         'Rating',
-        'documents_honors',
     ];
 
     public function user(): \Illuminate\Database\Eloquent\Relations\MorphOne
@@ -22,9 +21,29 @@ class Gym extends Model
         return $this->morphOne(User::class, 'userable');
     }
 
-    public function clubClass(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function clubClasses(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->HasMAny(ClubClass::class);
+        return $this->HasMany(ClubClass::class);
+    }
+
+    public function gymOwner(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    {
+        return $this->belongsTo(GymOwner::class);
+    }
+
+    public function coaches(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Coach::class, 'coach_gym', 'GymID', 'CoachID');
+    }
+
+    public function athletes(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
+    {
+        return $this->belongsToMany(Athlete::class, 'athlete_gym', 'GymID', 'CoachID');
+    }
+
+    public function reviews(): \Illuminate\Database\Eloquent\Relations\MorphMany
+    {
+        return $this->morphMany(Review::class, 'reviewable');
     }
 
     use HasFactory;
