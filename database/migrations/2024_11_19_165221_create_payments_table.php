@@ -14,9 +14,6 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id('PaymentID');
-            $table->unsignedBiginteger('BookingID')->unsigned();
-            $table->foreign('BookingID')->references('id')
-                ->on('bookings')->onDelete('cascade');
             $table->timestamp('PaymentDate')->default(Carbon::now());
             $table->integer('amount');
             $table->boolean('PaymentStatus');
