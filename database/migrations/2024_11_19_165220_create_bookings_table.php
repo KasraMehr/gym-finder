@@ -16,13 +16,16 @@ return new class extends Migration
             $table->id('BookingID');
             $table->unsignedBiginteger('AthleteID')->unsigned();
             $table->unsignedBiginteger('ClassID')->unsigned();
+            $table->unsignedNiginteger('PaymentID')->unsigned();
 
             $table->foreign('AthleteID')->references('id')
                 ->on('athletes')->onDelete('cascade');
             $table->foreign('ClassID')->references('id')
                 ->on('classes')->onDelete('cascade');
+            $table->foreign('PaymentID')->references('id')
+                ->on('payments')->onDelete('cascade');
             $table->timestamp('BookingDate')->default(Carbon::now());
-            // TODO: attendance associated table.
+            // TODO: attendance 
             $table->timestamps();
 
         });
