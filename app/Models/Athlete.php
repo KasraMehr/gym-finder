@@ -26,7 +26,7 @@ class Athlete extends Model
 
     public function coaches(): \Illuminate\Database\Eloquent\Relations\BelongsToMany
     {
-        return $this->belongsToMany(Coach::class,  'athlete_coach', 'AthleteID','CoachID');
+        return $this->belongsToMany(Coach::class, 'athlete_coach', 'AthleteID', 'CoachID');
     }
 
     public function gyms(): \Illuminate\Database\Eloquent\Relations\BelongsToMany

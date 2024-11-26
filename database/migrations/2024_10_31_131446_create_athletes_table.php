@@ -12,21 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('athletes', function (Blueprint $table) {
-            $table->id('AthleteID');
-            $table->unsignedBigInteger('userID')->unsigned();
-            $table->unsignedBigInteger('GymID')->unsigned();
+            $table->id('AthleteID'); // Primary key
+            $table->unsignedBigInteger('user_ID');
 
-            $table->foreignId('user_ID')->constrained('users')->onDelete('cascade'); // Foreign key to Users
-            $table->foreignId('GymID')->constrained('gyms');
-
-            $table->json('interests')->nullable(); // Stores an array of sports types or interests
-            $table->string('goals')->nullable(); // Goals like "Weight Loss," "Muscle Gain"
-            $table->string('honors')->nullable(); // like gold medal in 2009 year
-            $table->string('membership_level')->default('free'); // Membership Level: free, premium, etc.
-            $table->boolean('hide_profile')->default('ture'); // for more privacy
+            $table->foreign('user_ID')->references('userID')->on('users')->onDelete('cascade');
+            $table->json('interests')->nullable();
+            $table->string('goals')->nullable();
+            $table->string('honors')->nullable();
+            $table->string('membership_level')->default('free');
+            $table->boolean('hide_profile')->default(false);
             $table->enum('age_group', ['minors', 'infants', 'teenagers', 'adults', 'veterans'])->nullable();
-            // TODO: favorites (wish list)
-            $table->foreignId('coach_id')->constrained('coaches')->onDelete('cascade');
             $table->timestamps();
         });
     }

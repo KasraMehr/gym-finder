@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('gym_owners', function (Blueprint $table) {
             $table->id('GymOwnerID');
             $table->string('contact_info')->nullable();
-            $table->foreignId('userID')->constrained('users')->onDelete('cascade'); // Foreign key to Users
-            $table->foreignId('GymID')->constrained('gyms');
+            $table->unsignedBigInteger('user_ID');
+            $table->foreign('user_ID')->references('userID')->on('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

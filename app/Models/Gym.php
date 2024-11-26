@@ -46,9 +46,9 @@ class Gym extends Model
         return $this->morphMany(Review::class, 'reviewable');
     }
 
-    public function facalities()
+    public function facilities(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-       return $this->HasMany(Facalities::class);
+       return $this->HasMany(Facilities::class);
     }
     use HasFactory;
 }

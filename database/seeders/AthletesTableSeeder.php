@@ -20,7 +20,6 @@ class AthletesTableSeeder extends Seeder
                 'membership_level' => $faker->randomElement(['free', 'premium']),
                 'hide_profile' => $faker->boolean,
                 'age_group' => $faker->randomElement(['minors', 'infants', 'teenagers', 'adults', 'veterans']),
-                'coach_id' => $faker->numberBetween(1, 10),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

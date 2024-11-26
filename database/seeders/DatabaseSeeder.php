@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Review;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -20,7 +22,11 @@ class DatabaseSeeder extends Seeder
             GymOwnersTableSeeder::class,
             SportsTableSeeder::class,
             GymsTableSeeder::class,
-            // Add other seeders here
+            ClassesTableSeeder::class,
+            PaymentsTableSeeder::class,
+            BookingsTableSeeder::class,
+            ReviewsTableSeeder::class,
+
         ]);
     }
 

@@ -14,11 +14,15 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id('BookingID');
-            $table->foreignId('ClassID')->constrained('classes')->onDelete('cascade');
-            $table->foreignId('AthleteID')->constrained('athletes')->onDelete('cascade');
-            $table->foreignId('PaymentID')->constrained('payments')->onDelete('cascade');
+            $table->unsignedBigInteger('ClassID');
+            $table->unsignedBigInteger('AthleteID');
+            $table->unsignedBigInteger('PaymentID');
 
-            $table->primary(['AthleteID', 'ClassID', 'PaymentID']);
+            $table->foreign('ClassID')->references('ClassID')->on('classes')->onDelete('cascade');
+            $table->foreign('AthleteID')->references('AthleteID')->on('athletes')->onDelete('cascade');
+            $table->foreign('PaymentID')->references('PaymentID')->on('payments')->onDelete('cascade');
+
+            $table->unique(['AthleteID', 'ClassID', 'PaymentID']);
             $table->timestamp('BookingDate')->default(Carbon::now());
             // TODO: attendance
             $table->timestamps();

@@ -12,12 +12,17 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('classes', function (Blueprint $table) {
-            $table->foreignId('GymID')->constrained('gyms')->onDelete('cascade');
-            $table->foreignId('CoachID')->constrained('coaches')->onDelete('cascade');
-            $table->foreignId('SportID')->constrained('sports')->onDelete('cascade');
+            $table->id('ClassID');
+            $table->unsignedBigInteger('GymID');
+            $table->unsignedBigInteger('CoachID');
+            $table->unsignedBigInteger('SportID');
+
+            $table->foreign('GymID')->references('GymID')->on('gyms')->onDelete('cascade');
+            $table->foreign('CoachID')->references('CoachID')->on('coaches')->onDelete('cascade');
+            $table->foreign('SportID')->references('SportID')->on('sports')->onDelete('cascade');
 
             $table->string('className');
-            // TODO: schedule
+            $table->string('schedule');
             $table->float('duration');
             $table->integer('price');
             $table->integer('MaxParticipants');

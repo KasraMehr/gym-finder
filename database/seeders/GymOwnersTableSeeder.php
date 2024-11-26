@@ -14,8 +14,7 @@ class GymOwnersTableSeeder extends Seeder
         foreach (range(1, 10) as $index) {
             DB::table('gym_owners')->insert([
                 'user_id' => $index,
-                'GymName' => $faker->company,
-                'GymID' => $index,
+                'contact_info' => $faker->phoneNumber,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

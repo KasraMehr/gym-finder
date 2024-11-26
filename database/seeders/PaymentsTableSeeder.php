@@ -14,9 +14,8 @@ class PaymentsTableSeeder extends Seeder
 
         foreach (range(1, 20) as $index) {
             DB::table('payments')->insert([
-                'BookingID' => $index,
                 'PaymentDate' => $faker->dateTimeThisMonth(),
-                'amount' => $faker->numberBetween(10, 100),
+                'amount' => $faker->numberBetween(100000, 2000000),
                 'PaymentStatus' => $faker->boolean,
                 'created_at' => now(),
                 'updated_at' => now(),

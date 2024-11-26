@@ -9,8 +9,8 @@ class Coach extends Model
 {
     use HasFactory;
 
-    protected $table = "athletes";
-    protected $primaryKey = 'CoachIDi';
+    protected $table = "coaches";
+    protected $primaryKey = 'CoachID';
     protected $fillable = [
         'Specialties',
         'Certifications',

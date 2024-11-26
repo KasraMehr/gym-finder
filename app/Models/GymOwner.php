@@ -18,9 +18,4 @@ class GymOwner extends Model
     {
         return $this->morphOne(User::class, 'userable');
     }
-
-    public function gym(): \Illuminate\Database\Eloquent\Relations\HasOne
-    {
-        return $this->hasOne(Gym::class,  'GymID');
-    }
 }

@@ -16,6 +16,7 @@ class BookingsTableSeeder extends Seeder
             DB::table('bookings')->insert([
                 'AthleteID' => $faker->numberBetween(1, 10),
                 'ClassID' => $faker->numberBetween(1, 20),
+                'PaymentID' => $index,
                 'BookingDate' => $faker->dateTimeThisYear(),
                 'created_at' => now(),
                 'updated_at' => now(),

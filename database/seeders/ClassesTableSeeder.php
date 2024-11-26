@@ -8,7 +8,7 @@ use Faker\Factory as Faker;
 
 class ClassesTableSeeder extends Seeder
 {
-    public function run()
+    public function run(): void
     {
         $faker = Faker::create();
 
@@ -20,7 +20,7 @@ class ClassesTableSeeder extends Seeder
                 'className' => $faker->word . ' ' . $faker->randomElement(['Yoga', 'Cardio', 'Boxing', 'Weightlifting']),
                 'schedule' => $faker->dayOfWeek . ' ' . $faker->time() . ' - ' . $faker->time(),
                 'duration' => $faker->randomFloat(1, 0.5, 3),
-                'price' => $faker->numberBetween(10, 100),
+                'price' => $faker->numberBetween(100000, 2000000),
                 'MaxParticipants' => $faker->numberBetween(5, 30),
                 'created_at' => now(),
                 'updated_at' => now(),

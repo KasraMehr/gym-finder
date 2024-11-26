@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('coach_gym', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('CoachID')->constrained('coaches')->onDelete('cascade');
-            $table->foreignId('GymID')->constrained('gyms')->onDelete('cascade');
+            $table->unsignedBigInteger('CoachID');
+            $table->unsignedBigInteger('GymID');
 
-            $table->primary(['CoachID', 'GymID']);
+            $table->foreign('CoachID')->references('CoachID')->on('coaches')->onDelete('cascade');
+            $table->foreign('GymID')->references('GymID')->on('gyms')->onDelete('cascade');
+
+            $table->unique(['CoachID', 'GymID']);
 
             $table->timestamps();
         });

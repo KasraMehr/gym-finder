@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('gyms', function (Blueprint $table) {
             $table->id('GymID');
+            $table->unsignedBigInteger('GymOwnerID');
+
+            $table->foreign('GymOwnerID')->references('GymOwnerID')->on('gym_owners')->onDelete('cascade');
+
             $table->string('GymName');
-            $table->foreignId('GymOwnerID')->references('id')->on('gym_owners');
             $table->text('address')->nullable();
             $table->string('city');
-            // TODO: facilities.
             $table->decimal('Rating', 2, 1)->default(5);
-            // TODO: opening hours.
+            $table->string('OpeningHours')->nullable();
             $table->timestamps();
         });
     }

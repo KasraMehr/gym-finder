@@ -19,7 +19,6 @@ class GymsTableSeeder extends Seeder
                 'city' => $faker->city,
                 'Rating' => $faker->randomFloat(1, 1, 5),
                 'OpeningHours' => '9AM - 9PM',
-                'ContactInfo' => $faker->phoneNumber,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);

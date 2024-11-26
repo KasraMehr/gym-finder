@@ -15,8 +15,9 @@ return new class extends Migration
         Schema::create('reviews', function (Blueprint $table) {
             $table->id('ReviewID');
 
-            $table->foreignId('userID')->constrained('users')->onDelete('cascade');
+            $table->unsignedBigInteger('user_ID');
 
+            $table->foreign('user_ID')->references('userID')->on('users')->onDelete('cascade');
             $table->morphs('reviewable');
 
             $table->decimal('Rating', 2, 1)->default(5);

@@ -13,10 +13,13 @@ return new class extends Migration
     {
         Schema::create('athlete_class', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('AthleteID')->constrained('athletes')->onDelete('cascade');
-            $table->foreignId('ClassID')->constrained('classes')->onDelete('cascade');
+            $table->unsignedBigInteger('AthleteID');
+            $table->unsignedBigInteger('ClassID');
 
-            $table->primary(['AthleteID', 'ClassID']);
+            $table->foreign('AthleteID')->references('AthleteID')->on('athletes')->onDelete('cascade');
+            $table->foreign('ClassID')->references('ClassID')->on('classes')->onDelete('cascade');
+
+            $table->unique(['AthleteID', 'ClassID']);
 
             $table->timestamps();
         });
