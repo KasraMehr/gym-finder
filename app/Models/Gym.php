@@ -46,5 +46,9 @@ class Gym extends Model
         return $this->morphMany(Review::class, 'reviewable');
     }
 
+    public function facalities()
+    {
+       return $this->HasMany(Facalities::class);
+    }
     use HasFactory;
 }
